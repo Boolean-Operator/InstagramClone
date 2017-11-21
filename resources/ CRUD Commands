@@ -1,0 +1,88 @@
+
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        ******          CRUD COMMANDS                   ******
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        
+        ********************* CREATE ***************************
+
+CREATE DATABASE <database name>;			//creates a database
+
+DROP DATABASE <database name>;			//***CAUTION*** delete database 
+
+CREATE TABLE <tablename>				//creates table within a database
+  (
+    <column_name> <data_type> NOT NULL,		//data type value is required
+    <column_name> <data_type> NOT NULL,	  //will show warning if datatype undefined
+    <column_name> <data_type> DEFAULT <’value'>,		//sets a default value  data type
+    <column_name> <data_type> AUTO_INCREMENT,	  //tracks last value and increments value
+    PRIMARY KEY (<column name>)			  //sets the primary key, a unique identifier for each record		
+  ); 
+  
+    CREATE TABLE <tablename>				//creates table within a database
+      (
+        <column_name> <data_type> NOT NULL,		//data type value is required
+        <column_name> <data_type> NOT NULL,		//will show warning if datatype undefined
+        <column_name> <data_type> DEFAULT <’value'>,		//sets a default value  data type
+        <column_name> <data_type> AUTO_INCREMENT,	  //tracks last value and increments value
+        PRIMARY KEY (<column name>)			  //sets the primary key, a unique identifier for each record		
+      ); 
+
+SHOW TABLES;					//shows tables within database
+
+SHOW CREATE TABLE <table_name>;    //-- you can also do one (or more) columns
+                                  //-- you can use FROM or IN, they both work (in MySQL)
+                                  
+                                  
+SHOW FULL COLUMNS IN <table_name>FROM <database> LIKE <field>;     //-- you can also used FIELDS instead of COLUMNS (in MySQL)
+
+SHOW FULL COLUMNS FROM <table_name>;    //shows ALL the columns in a table
+ 
+SHOW COLUMNS FROM <tablename>;			//shows columns with in a table
+ 
+DESC <tablename>;					//Describes table, shows columns within a table
+  
+DROP TABLE <tablename>;				//Deletes a table from a database
+
+INSERT INTO <table_name>(<column_name>) 		//Inserts data into columns of a database table
+VALUES (<data>);
+  INSERT INTO cats(name, age)
+    VALUES ('Jetson', 7);
+
+SHOW WARNINGS;				  //Shows warnings from data input
+
+
+        ********************* READ ***************************
+
+SELECT * FROM <table name>;				//Shows data from all columns in table
+
+SELECT * FROM <table name> WHERE <column_name> = <condtion>;				//Shows data from all columns in table from certain records matching criteria
+
+
+SELECT <column_name, column_name> FROM <table name>;				//Shows data from specific columns in table
+
+SELECT <column_name> FROM <table name> WHERE <condition>;				//Shows data from specific column in table that meet certain criteria
+  SELECT cat_id FROM cats WHERE name = 'egg';
+
+SELECT column_name AS 'alias alias', column_name AS alias FROM table;   //Changes column header for display to alias, Does NOT alter table
+  SELECT name AS 'Pet Name', breed AS type FROM cats;
+
+
+        ********************* UPDATE ***************************
+ // ---> HINT: Run SELECT before updating to confirm you are updating the correct record(s) 
+SELECT * FROM cats;
+
+UPDATE <table_name> SET <column_name> = '<condition>' WHERE <column_name> = '<condtion>';   // Changes(UPDATE) data of certain records matching WHERE condition to SET condition
+  UPDATE cats SET breed = 'Shorthair' WHERE breed = 'tabby';                                // Changes record(s) from 'tabby' to 'Shorthair'
+  
+      
+        ********************* DELETE ***************************
+  //---> !!  ^!^ !! DELETE IS PERMANANT !!  ^!^ !!
+ // ---> HINT: Run SELECT before DELETING to confirm you have the correct record(s) 
+ // --->SELECT * FROM cats;
+  
+  
+DELETE FROM <table_name> WHERE <column_name> = <condition>;
+  
+  
+  
+  

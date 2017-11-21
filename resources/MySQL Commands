@@ -1,0 +1,57 @@
+mysql-ctl start;						//start MySQL
+ 
+mysql-ctl cli;						//run MySQL interactive shell
+ 
+mysql-ctl stop;						//stop MySQL 
+
+exit; quit;  \q; ctrl-c					//quit cli
+
+help;							//provides help commands and subjects
+
+source first_file.sql       //runs the file first_file.sql from commands line ; useful for creating tables and data sets in a text based file.
+
+show databases;						//shows list of current databases
+ 
+select @@hostname; 					//tell your @ hostname
+
+USE <database name>;					//tells MySQL which database we want to use
+	
+SELECT database();					//tells the database currently in use
+
+CREATE DATABASE <database name>;			//creates a database
+
+DROP DATABASE <database name>;			//***CAUTION*** delete database 
+
+SHOW TABLES;					//shows tables within database
+
+SHOW CREATE TABLE <table_name>;    //-- you can also do one (or more) columns
+                                  //-- you can use FROM or IN, they both work (in MySQL)
+
+SHOW FULL COLUMNS IN <table_name>FROM <database> LIKE <field>;     //-- you can also used FIELDS instead of COLUMNS (in MySQL)
+
+SHOW FULL COLUMNS FROM <table_name>;    //shows ALL the columns in a table
+ 
+SHOW COLUMNS FROM <tablename>;			//shows columns with in a table
+ 
+DESC <tablename>;					//Describes table, shows columns within a table
+  
+DROP TABLE <tablename>;				//Deletes a table from a database
+
+SELECT * FROM <table name>;				//Shows data from all columns in table
+
+
+
+
+-- TO FIND TABLES AFFECTED BY "ON DELETE CASCADE"
+--  Example from Instagram Clone
+
+USE information_schema;
+
+SELECT
+  table_name
+FROM referential_constraints
+WHERE constraint_schema = 'ig_clone'
+AND referenced_table_name = 'users'
+AND delete_rule = 'CASCADE';
+USE information_schema;
+

@@ -1,0 +1,8 @@
+SHOW TABLES;  
+SHOW COLUMNS FROM users;
+SHOW COLUMNS FROM photos;
+
+SELECT * FROM users;
+SELECT * FROM photos;
+
+

@@ -1,0 +1,52 @@
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        ******            STRING FUNCTIONS              ******
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        
+        ******************** CONCAT **************************
+
+CONCAT(x,y,z)   // from slides
+
+CONCAT(column, 'text', anotherColumn, 'more text')    // add 'text' between columns and 'more text' after last column
+ 
+SELECT
+  CONCAT(author_fname, ' ', author_lname)
+FROM books;                                   //proper syntax
+ 
+SELECT
+  CONCAT(author_fname, ' ', author_lname)
+  AS 'full name'                              // using alias FOR solumn header
+FROM books;   
+ 
+SELECT author_fname AS first, author_lname AS last, 
+  CONCAT(author_fname, ' ', author_lname) AS full
+FROM books;
+
+SELECT 
+    CONCAT_WS(' - ', title, author_fname, author_lname)     //CONCAT with separator
+FROM books;
+ 
+        
+        ******************** SUBSTRING **************************
+        ********************  SUBSTR   **************************
+        
+SELECT SUBSTRING(title, 1, 10) FROM books;    // returns characters 1 thru 10 from the title string
+ 
+SELECT SUBSTRING(title, 1, 10) AS 'short title' FROM books;   //with alias; same as above, but changes column header to 'short title' 
+ 
+SELECT CONCAT                                           // concatenates substring return with text  
+    (
+        SUBSTRING(title, 1, 10),
+        '...'                                           // text '...'
+    )
+FROM books;
+ 
+// can be saved as sql file and called to run
+ 
+
+        ****************** UPPER & LOWER ************************
+
+SELECT UPPER(title) FROM books;                                     // selects and displays titles in all upper case letters
+ 
+SELECT CONCAT('MY FAVORITE BOOK IS ', UPPER(title)) FROM books;     // concatenates string with uppper case title
+ 
+SELECT CONCAT('MY FAVORITE BOOK IS ', LOWER(title)) FROM books;     // concatenates string with lower case titles
