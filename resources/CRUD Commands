@@ -80,7 +80,7 @@ UPDATE <table_name> SET <column_name> = '<condition>' WHERE <column_name> = '<co
  // ---> HINT: Run SELECT before DELETING to confirm you have the correct record(s) 
  // --->SELECT * FROM cats;
   
-DELETE FROM <table_name>                        *** deletes all row  ***
+DELETE FROM <table_name>;                        *** deletes all row  ***
 DELETE FROM <table_name> WHERE <column_name> = <condition>;
   
   
